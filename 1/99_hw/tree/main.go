@@ -20,3 +20,8 @@ func main() {
 		panic(err.Error())
 	}
 }
+
+func dirTree(out io.Writer, path string, printFiles bool) error {
+
+	return nil
+}

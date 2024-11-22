@@ -16,6 +16,7 @@ func doWork(th int) {
 	for j := 0; j < iterationsNum; j++ {
 		fmt.Printf(formatWork(th, j))
 		// time.Sleep(time.Millisecond)
+		runtime.Gosched()
 	}
 }
 

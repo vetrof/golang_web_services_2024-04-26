@@ -45,9 +45,7 @@ func getData(url string, outChan chan<- int) {
 	defer resp.Body.Close()
 
 	status := resp.StatusCode
-
 	outChan <- status
-
 }
 
 func getFromEnv() (repeat int, urls []string) {
@@ -69,7 +67,8 @@ func getFromEnv() (repeat int, urls []string) {
 	return repeat, urls
 }
 
-// getInputInt получает целое число от пользователя
+// TODO для взятия аргументов через командную строку
+// получает целое число от пользователя
 func getInputInt() int {
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -88,7 +87,7 @@ func getInputInt() int {
 	}
 }
 
-// getInputURLs получает список URL от пользователя
+// получает список URL от пользователя
 func getInputURLs() []string {
 	reader := bufio.NewReader(os.Stdin)
 	for {

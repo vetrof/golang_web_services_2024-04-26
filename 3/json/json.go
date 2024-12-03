@@ -8,7 +8,7 @@ import (
 type User struct {
 	ID       int
 	Username string
-	phone    string
+	Phone    string
 }
 
 var jsonStr = `{"id": 42, "username": "rvasily", "phone": "123"}`
@@ -20,7 +20,7 @@ func main() {
 	json.Unmarshal(data, u)
 	fmt.Printf("struct:\n\t%#v\n\n", u)
 
-	u.phone = "987654321"
+	u.Phone = "987654321"
 	result, err := json.Marshal(u)
 	if err != nil {
 		panic(err)

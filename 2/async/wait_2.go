@@ -8,25 +8,25 @@ import (
 )
 
 const (
-	iterationsNum = 7
-	goroutinesNum = 5
+	iterationsNum__ = 7
+	goroutinesNum__ = 5
 )
 
-func startWorker(in int, waiter *sync.WaitGroup) {
+func startWorker__(in int, waiter *sync.WaitGroup) {
 	defer waiter.Done() // wait_2.go уменьшаем счетчик на 1
-	for j := 0; j < iterationsNum; j++ {
-		fmt.Printf(formatWork(in, j))
+	for j := 0; j < iterationsNum__; j++ {
+		fmt.Printf(formatWork__(in, j))
 		time.Sleep(time.Millisecond) // попробуйте убрать этот sleep
 	}
 }
 
 func main() {
 	wg := &sync.WaitGroup{} // wait_2.go инициализируем группу
-	for i := 0; i < goroutinesNum; i++ {
+	for i := 0; i < goroutinesNum__; i++ {
 		// wg.Add надо вызывать в той горутине, которая порождает воркеров
 		// иначе другая горутина может не успеть запуститься и выполнится Wait
 		wg.Add(1) // wait_2.go добавляем
-		go startWorker(i, wg)
+		go startWorker__(i, wg)
 	}
 	time.Sleep(time.Millisecond)
 	wg.Wait() // wait_2.go ожидаем, пока waiter.Done() не приведёт счетчик к 0
@@ -35,9 +35,9 @@ func main() {
 
 }
 
-func formatWork(in, j int) string {
+func formatWork__(in, j int) string {
 	return fmt.Sprintln(strings.Repeat("  ", in), "█",
-		strings.Repeat("  ", goroutinesNum-in),
+		strings.Repeat("  ", goroutinesNum__-in),
 		"th", in,
 		"iter", j, strings.Repeat("■", j))
 }

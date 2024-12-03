@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"github.com/joho/godotenv"
 	"log"
@@ -65,43 +64,4 @@ func getFromEnv() (repeat int, urls []string) {
 		log.Fatalf("URLS не заданы в .env")
 	}
 	return repeat, urls
-}
-
-// TODO для взятия аргументов через командную строку
-// получает целое число от пользователя
-func getInputInt() int {
-	reader := bufio.NewReader(os.Stdin)
-	for {
-		input, err := reader.ReadString('\n')
-		if err != nil {
-			fmt.Println("Ошибка ввода, попробуйте снова.")
-			continue
-		}
-		input = strings.TrimSpace(input)
-		number, err := strconv.Atoi(input)
-		if err != nil || number <= 0 {
-			fmt.Println("Введите корректное положительное число.")
-			continue
-		}
-		return number
-	}
-}
-
-// получает список URL от пользователя
-func getInputURLs() []string {
-	reader := bufio.NewReader(os.Stdin)
-	for {
-		input, err := reader.ReadString('\n')
-		if err != nil {
-			fmt.Println("Ошибка ввода, попробуйте снова.")
-			continue
-		}
-		input = strings.TrimSpace(input)
-		urls := strings.Split(input, ",")
-		if len(urls) == 0 || urls[0] == "" {
-			fmt.Println("Введите хотя бы один URL.")
-			continue
-		}
-		return urls
-	}
 }
